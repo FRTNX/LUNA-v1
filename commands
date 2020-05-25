@@ -1,0 +1,39 @@
+
+Welcome to the LUNA Help Center.
+
+  *'weather'*                           - returns weather at host location coordinates.
+  'whats the weather like in <CITY>'    - returns weather of remote coordinates.
+  'whats in the papers'                 - returns headlines from subscribed sources..
+  'tell me everything you know about <SUBJECT>'  - returns partial subject data or null.
+        'tell me more'                           - returns full subject data. depends on the above
+                                                   command.
+        'save'                                   - saves extracted file from the two commands 
+                                                   immediately above. If file already exists, 
+                                                   the old file is archived as the new one takes
+                                                   its place. 
+  'tell me everything you know'         - returns database listing. default database is: partial
+  'load full database'                  - loads full database listing for preview
+  'load partial database'               - loads partial (science biased) database listing for preview
+  'traceroute <target>                  - returns traditional traceroute, then presents more data.
+  'port'                                - opens an email forward-transmission port. 
+  'clean swap'                          - cleans out your swap memory. make sure you have enough free 
+                                          ram.
+  'terminal'                            - opens ghost terminal.
+  'netdog'                              - restarts network manager.
+  'find me all occurances of <SUBJECT>' - returns all locally existing files on subject.
+  'get me new intel on <SUBJECT>'       - forces a remote extraction of subject data. can be used to 
+                                          fetch updated data of locally pre-existing subject.
+  'how do I pronounce <NUM>'            - returns num (number) pronunciation. usefull with large 
+                                          numbers.
+  'translator'                          - activates human language translator. surround target section
+                                          with "". eg. what does "in vivo veritas" mean?
+  'how do i get to <DEST> from <SOURCE>'- charts a cartographic course to destination from source
+  'dictionary'; 'dict'                  - Enter dictionary mode. Enter 'exit' to close dictionary.
+  'fibonacci'                           - starts a luna-vs-user finonacci sequence show down.
+  'show me <NUM> images of <SUBJECT>'   - returns num pictures of subject, where num is the number of
+                                          iamges you wish to see. images may be saved by passing a
+                                          'save' command immediately after the images are shown.
+
+  Some useful Gnome-Terminal shortcuts
+
+  Shift+Ctrl+f                          - search terminal output.

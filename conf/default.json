@@ -1,0 +1,11 @@
+{
+    "version": "1.0.4",
+    "quotes": {
+        "extract": true,
+        "last_extraction_date": null
+    },
+    "images": {
+        "batch_size": 5,
+        "image_width": 400
+    }
+}

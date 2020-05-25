@@ -1,0 +1,273 @@
+%[get_weather]('training': '300', 'testing': '1')
+    ~[weather] ~[at?] @[location]
+    ~[weather]
+
+%[find_info]('training': '8000', 'testing': '12')
+    ~[inform_me] ~[about] @[subject]
+    ~[show_me] @[subject]
+    ~[who-what] ~[a?] @[subject]
+
+%[find_more_info]('training': '3000', 'testing': '12')
+    ~[more] ~[about] @[subject]
+    ~[more]
+
+%[find_related_info]('training': '800', 'testing': '10')
+    ~[occurances] ~[of] @[subject] 
+
+%[find_images]('training': '8000', 'testing': '10')
+    ~[display] ~[quantity?] ~[images] ~[of?] @[subject]
+
+~[weather]
+    weather
+    whats the weather like
+    whats the weather
+    wther
+    wthr
+    weather forcast
+    tell me the weather
+    hows the weather
+
+~[occurances]
+    find me all occurances
+    occurances
+    relations
+    find me all relations
+    find me anything to do
+
+~[inform_me]
+    tel me
+    tll me
+    tell me
+    wat do u know
+    wat do u knw
+    what do you know
+    tell me everything you know
+    tell me evrythng u know
+    tel me evrytng u knw
+    fill me in
+    get me up to speed
+    inform me
+    fill me in
+    show me all
+    inform
+    show me
+
+~[who-what]
+    who is
+    what is
+    what in gods name is
+    who the hell is
+    who the fuck is
+    what the fuck is
+    what are
+    what was
+    who was
+    what the fuck was
+    who the fuck was
+    what in gods name was
+    who in gods name was
+
+~[a]
+    a
+
+~[display]
+    show me
+    find me
+    find
+    show
+    display
+    seek
+
+~[images]
+    images
+    pictures
+    pics
+    imgs
+    image
+    picture
+    pic
+
+~[show_me]
+    show me your
+    show me the
+    show me your
+    show me the
+
+~[about]
+    about
+    abt
+    on
+    of
+
+~[at]
+    at
+    in
+
+~[of]
+    of
+    with
+
+~[more]
+    more
+    more on
+    more about
+    tell me more
+    more data
+    find me more data
+    more info
+    find me more info
+    more information
+    find me more information
+    show me more
+    show me more data
+    show me more information
+
+~[quantity]
+    1
+    15
+    100
+    72
+    4
+    21
+    25
+    56
+    89
+    34
+    20
+
+@[location]
+    Johannesburg
+    Cape Town
+    Toronto
+    Butan
+    Hawaii
+    Parktown, Johannesburg
+    Durban
+    Brooklyn
+    Kimberly, South Africa
+    London
+    Tokyo
+    Cleveland, United States
+    Nepal
+    Somalia
+
+@[subject]
+    climate change
+    Mars
+    Tourism
+    economics
+    science
+    religion
+    corruption
+    human virtues
+    Aristotle
+    Tobacco
+    Oil spills
+    Nuclear gold codes
+    Jon Hopkins (musician)
+    the Cambrian explosion
+    technology
+    artificial stupidity
+    Marvin Minsky
+    psychology
+    Jesus Christ
+    Buddhism
+    Taoism
+    Tai Chi
+    Brakence (musician)
+    NASA
+    SpaceX
+    Faster than light speed
+    Wormholes
+    Metasploit
+    ARkStorm, a hypothetical storm by the same name that could affect California
+    Backscatter X-ray (in security scanning applications, e.g. at airports)
+    America's Great Depression by Murray Rothbard
+    Carathéodory's extension theorem
+    Eugene Green Energy Standard, founded by the WWF
+    Business continuity
+    Hyperbolic set
+    Fuzzy logic
+    Tropical cyclone effects in Europe
+    Physics Abstraction Layer (PAL)
+    List of file signatures
+    List of flying wing aircraft
+    UNESCO Intangible Cultural Heritage Lists
+    Naswar
+    Mobile wireless sensor networks
+    world heritage sites
+    Cultural Properties of Japan
+    Diffeomorphism constraint
+    Perron–Frobenius theorem
+    Climate cycle
+    Hamiltonian lattice gauge theory
+    United States presidential election, 2016 timeline
+    Russian interference in the 2016 United States elections
+    2016 United States election interference by Russia
+    Donald Trump presidential campaign, 2016
+    See the general list of legal topics regarding any legal topics outside of the area of tort law
+    Trump campaign–Russian meeting on June 9, 2016
+    Timeline of events related to Russian interference in the 2016 US presidential election
+    Presidency of Donald Trump
+    Donald Trump on social media     (22)
+    List of things named after Donald Trump
+    Russia–United States relations
+    Special Counsel investigation (2017–present)
+    Timeline of Russian interference in the 2016 United States elections
+    The Plot to Hack America, a 2016 book by Malcolm Nance about alleged Russian interference in the 2016     elections
+    Opinion polling on the Donald Trump administration
+    Republican Party presidential debates, 2016
+    Republican Party presidential debates and forums, 2016
+    2016 Republican National Convention
+    United States withdrawal from the Paris Agreement
+    United States presidential election, 2016, similar issue with Donald Trump winning by American issues over the working class
+    European countries by electricity consumption per person
+    Rhyming slang (e.g. Cockney rhyming slang)
+    Lock (computer science)
+    Nonnegative matrices
+    Systems ecology
+    Seismic risk
+    Fallacy of many questions
+    Atlantic hurricane seasons
+    Desiccation tolerance
+    Antonov An-12
+    Order of X
+    Recursion (computer science)
+    Fuzzy architectural spatial analysis
+    Land surface effects on climate
+    Scientific opinion on climate change
+    Ballistic Missile Defense Organization, an agency of the United States Department of Defense
+    Mass collaboration
+    Demographic history of the United States
+    World Heritage Site
+    Property manager
+    Black Holes
+    Pinetown
+    Pinetown (South Africa)
+    Pinetown, South Africa
+    List of private spaceflight companies including only companies with primarily private funding and missions ("NewSpace")
+    List of satellites in geosynchronous orbit
+    List of space exploration milestones, 1957-1969
+    List of spacecraft and crews that visited Mir
+    List of spaceflights to the International Space Station
+    List of spacewalks and moonwalks 1965–1999
+    List of tallest mountains in the Solar System
+    List of the largest fixed satellite operators
+    List of the most prominent summits of Central America
+    List of the most prominent summits of Greenland
+    List of unmanned spaceflights to the ISS
+    List of unmanned spaceflights to the International Space Station
+    Lists of geological features of the Solar System
+    Lists of real astronomical locations in fiction
+    Maximum Absorbency Garment (NASA garment to help contain bodily emissions during spaceflight for men and women)
+    Mercury 13 – the Women of the Mercury Era
+    Mining the Sky: Untold Riches from the Asteroids, Comets, and Planets
+    Out of the Cradle (book) - scientific speculation on future missions.
+    Spaceport (including timeline of first orbital launches by spaceport)
+    Spaceport, including lists of spaceports that have achieved satellite launches and launches of humans
+    Timeline of Russian inventions and technology records
+    Timeline of artificial satellites and space probes
+    Timeline of discovery of Solar System planets and their moons
+    Timeline of first orbital launches by country
+    Timeline of largest projects in the Russian economy
+    Unmanned spaceflights to the International Space Station
