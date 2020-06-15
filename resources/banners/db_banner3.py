@@ -127,7 +127,7 @@ for i in range(4):
         print(f'{space}{formatted_line}')
 
 print(Fore.RESET+'\n\n')
-time.sleep(1)
+# time.sleep(1)
 
 
 

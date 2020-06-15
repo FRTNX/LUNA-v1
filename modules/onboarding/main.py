@@ -105,7 +105,8 @@ def initialize():
 
     # only fetch quotes if last extraction time is >= 24hours
     try:
-        if (config['defaults']['find_quotes'] == True):
+        if (config['defaults']['find_quotes'] == 'True'):
+            logging.info(f'Beginning quote extraction with {persistence.count_quotes()} persisted quotes')
             quote_thread = StoppableThread(target=get_quotes)
             quote_thread.daemon = True
             quote_thread.start()
