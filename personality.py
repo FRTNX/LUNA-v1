@@ -66,7 +66,7 @@ import threading
 from colorama import Fore
 # from pymongo import MongoClient
 from annoyances import *
-from persistence import index as persistence
+from modules.persistence import db_handler as persistence
 
 # client = MongoClient()
 # db = client.in_vivo_veritas

@@ -77,6 +77,7 @@ def color(text, color):
     if (color == 'green'):
         return Fore.GREEN + text + Fore.RESET
 
+# todo: refactor
 print('\n\n')
 for i in range(4):
     formatted_line = ''
