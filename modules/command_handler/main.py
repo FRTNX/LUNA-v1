@@ -36,26 +36,32 @@
 
 # All rights reserved under the 3-clause BSD License:
 
-#  Redistribution and use in source and binary forms, with or without modification, are permitted
-#  provided that the following conditions are met:
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
 
-#   * Redistributions of source code must retain the above copyright notice, this list of conditions
-#     and the following disclaimer.
-#   * Redistributions in binary form must reproduce the above copyright notice, this list of
-#     conditions and the following disclaimer in the documentation and/or other materials provided
-#     with the distribution.
-#   * Neither the name FRTNX nor Busani P. Ndlovu nor any other moniker nor the names of any present
-#     or future contributors may be used to endorse or promote products derived from this software
-#     without specific prior written permission.
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-# FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL CONTINUUM ANALYTICS, INC. BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-# OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-# THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+
+# 3. Neither the name of the copyright holder nor the names of its
+#    contributors may be used to endorse or promote products derived from
+#    this software without specific prior written permission.
+
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
 
 
 from annoyances import *
@@ -64,6 +70,7 @@ import os
 import inflect
 import rollbar
 import random
+import wikipedia
 import wolframalpha
 from func_timeout.StoppableThread import StoppableThread
 from colorama import Fore, Style
@@ -73,6 +80,7 @@ from modules.persistence import db_handler as persistence
 from modules.utils import main as utils
 from modules.informant import listing_handler
 from modules.informant import nc_handler
+from modules.informant import main as intel_handler
 from modules.onboarding import main as onboarding
 from modules.display_manager.main import output_prompt as H
 from modules.display_manager import main as display_manager
@@ -93,9 +101,9 @@ except Exception as e:
     logging.error(e)
     logging.error("I'm brainless.")
 
-load_character = StoppableThread(target=utils.character_loader, args=(kernel,))
-load_character.daemon = True
-load_character.start()
+load_bot_attributes = StoppableThread(target=utils.character_loader, args=(kernel,))
+load_bot_attributes.daemon = True
+load_bot_attributes.start()
 
 coords = StoppableThread(target=utils.get_coords)
 coords.daemon = True
@@ -178,6 +186,29 @@ def command_handler(user_input):
             nc_handler.main()
             return
 
+        # nlu fallbacks
+        if command.startswith('open ') or command.startswith('op '):
+            entity = command[3:] if command.startswith('op ') else command[x:5]
+            action = intel_handler.informant(entity, True, 0, False)
+            logging.info(f'Caller received action: {action}')
+            return
+
+        if command.startswith('images of ') or command.startswith('im '):
+            if utils.is_online():
+                entity = command[3:] if command.startswith('im ') else command[x:10]
+                try:
+                    image_urls = wikipedia.page(entity).images
+                    render_images = StoppableThread(target=display_manager.fetch_images, args=(entity, image_urls,))
+                    render_images.daemon = True
+                    render_images.start()
+                    H(); sprint(random.choice(pending_image_search_responses))
+                except Exception as e:
+                    logging.error(e)
+                    H(); sprint('For some reason I could not comply.')
+            else:
+                H(); sprint('I need an internet connection to comply.')
+            return
+
         elif command == 'search quotes':
             # display_manager.quote_search()
             return
@@ -210,7 +241,7 @@ def command_handler(user_input):
             formatted_parameters = ''
             for target in targets:
                 formatted_parameters += f"'{target.strip()}' "
-            os.system(f'gnome-terminal -e "python functions/extractor/extractor.py {formatted_parameters}"')
+            os.system(f'gnome-terminal -e "python modules/extractor/extractor.py {formatted_parameters}"')
             return
 
         # todo: run without tagging. Also find a way to remove entries from text file after extraction.
@@ -379,7 +410,7 @@ def command_handler(user_input):
             os.system('sudo python3 herodotus.py')
             return
 
-        elif 'exit' in command:
+        elif command in ['exit', 'die']:
             H(); sprint(random.choice(farewell_responses))
             logging.warn('shutting down...')
             exit()
