@@ -77,6 +77,7 @@ def color(text, color):
     if (color == 'green'):
         return Fore.GREEN + text + Fore.RESET
 
+# todo: refactor
 print('\n\n')
 for i in range(4):
     formatted_line = ''
@@ -126,7 +127,7 @@ for i in range(4):
         print(f'{space}{formatted_line}')
 
 print(Fore.RESET+'\n\n')
-time.sleep(1)
+# time.sleep(1)
 
 
 

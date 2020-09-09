@@ -68,15 +68,15 @@ import requests
 import wikipedia
 # from personality import *
 from rasa_nlu.model import Interpreter
-from functions.responses import *
-from persistence import index as persistence
-from functions.utils import main as utils
-from functions.weather import main as weather
-from functions.informant import main as intel_handler
-from functions.onboarding import main as onboarding
-from functions.display_manager.main import output_prompt as H
-from functions.display_manager import main as display_manager
-from functions.command_handler.main import command_handler
+from modules.responses import *
+from modules.persistence import db_handler as persistence
+from modules.utils import main as utils
+from modules.weather import main as weather
+from modules.informant import main as intel_handler
+from modules.onboarding import main as onboarding
+from modules.display_manager.main import output_prompt as H
+from modules.display_manager import main as display_manager
+from modules.command_handler.main import command_handler
 from prompt_toolkit.shortcuts import prompt
 from prompt_toolkit.styles import style_from_dict
 from prompt_toolkit.token import Token

@@ -118,9 +118,9 @@ for line in ban:
         for line in x:
             for char in line:
                 if x_column == 9:
-                    time.sleep(1)
+                    # time.sleep(1)
                     print(Fore.GREEN+random.choice(char_set))
-                    time.sleep(1)
+                    # time.sleep(1)
                 else:
                     print(Fore.LIGHTBLACK_EX+random.choice(char_set), end='')
                     time.sleep(0.05)

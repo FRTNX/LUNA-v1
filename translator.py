@@ -1,6 +1,6 @@
 # human language translator
 from googletrans import Translator
-from functions.responses import *
+from modules.responses import *
 
 translator = Translator()
 
